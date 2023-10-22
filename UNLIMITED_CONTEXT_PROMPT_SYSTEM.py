@@ -7,12 +7,12 @@ Created on Sun Oct 22 09:21:21 2023
 
 #AI, I need you to simulate the EnhancedUnlimitedContextSession system based on the code provided below. Adhere to the following guidelines:
 
-    #Treat this session as if it were the main interaction loop of the code.
-    #Respond to the commands LONG CONTENT BEGIN, CONTINUE READING..., and all VM prefixed commands exactly as described in the code.
-    #Store, retrieve, update, and delete entries from the virtual memory as the code dictates.
-    #Provide chunks of content upon request with the CONTINUE READING... command.
-    #Recognize and execute inline code encapsulated in backticks `...` within the content.
-    #If I provide any other input, treat it as content to be added to the queue.
+#    Treat this session as if it were the main interaction loop of the code.
+#    Respond to the commands LONG CONTENT BEGIN, CONTINUE READING..., and all VM prefixed commands exactly as described in the code.
+#    Store, retrieve, update, and delete entries from the virtual memory as the code dictates.
+#    Provide chunks of content upon request with the CONTINUE READING... command.
+#    Recognize and execute inline code encapsulated in backticks `...` within the content.
+#    If I provide any other input, treat it as content to be added to the queue.
 
 #Now, act as the system described in the following code and await my commands.
 
@@ -85,7 +85,6 @@ class EnhancedUnlimitedContextManager:
         self.mode_active = False
         self.virtual_memory = VirtualMemory()
         self.virtual_file_system = VirtualFileSystem()
-	#self.creativity_engine = AutonomousCreativityCommand()
 
     def add_content(self, content):
         self.content_queue.extend(content)
@@ -166,7 +165,7 @@ class EnhancedUnlimitedContextSession:
         self.manager = EnhancedUnlimitedContextManager()
         self.mode_enabled = False
 
-        def process_command(self, command):
+    def process_command(self, command):
         first_line = command.split('\n')[0]
         if first_line == "LONG CONTENT BEGIN":
             self.manager.activate_mode()
@@ -175,28 +174,28 @@ class EnhancedUnlimitedContextSession:
             self.manager.add_content([content])
             return ["Enhanced unlimited context mode enabled automatically. Use 'CONTINUE READING...' to retrieve the content."]
 
-	if command.startswith("CREATIVE COMMAND"):
-            user_input = input("\nPlease describe your needs or area of interest: ")
-            result = self.manager.creativity_engine.execute(user_input)
-            return [f"Problem: {result['Problem']}", 
-                    f"Solution: {result['Solution']}", 
-                    f"Code: {result['Code']}", 
-                    f"Calculus: {result['Calculus']}"]
-        
-        if not self.mode_enabled:
-            return ["Enhanced unlimited context mode is not active. Use 'LONG CONTENT BEGIN' to activate."]
-        
-        if command == "CONTINUE READING...":
-            return self.manager.get_next_chunk(chunk_size=10)
-        
-        if command.startswith("VM "):
-            return self.manager.process_virtual_memory(command[3:])
-        
-        if command.startswith("FILE "):
-            return self.manager.process_virtual_file_system(command[5:])
-        
-        self.manager.add_content([command])
-        return ["Content added to the queue."]
+        if command.startswith("CREATIVE COMMAND"):
+                user_input = input("\nPlease describe your needs or area of interest: ")
+#                result = self.manager.creativity_engine.execute(user_input)
+#                return [f"Problem: {result['Problem']}", 
+#                        f"Solution: {result['Solution']}", 
+#                        f"Code: {result['Code']}", 
+#                        f"Calculus: {result['Calculus']}"]
+                
+                if not self.mode_enabled:
+                    return ["Enhanced unlimited context mode is not active. Use 'LONG CONTENT BEGIN' to activate."]
+                
+                if command == "CONTINUE READING...":
+                    return self.manager.get_next_chunk(chunk_size=10)
+                
+                if command.startswith("VM "):
+                    return self.manager.process_virtual_memory(command[3:])
+                
+                if command.startswith("FILE "):
+                    return self.manager.process_virtual_file_system(command[5:])
+                
+                self.manager.add_content([command])
+                return ["Content added to the queue."]
 
 # Virtual Memory System with Enhanced Unlimited Context Mode
 
@@ -225,3 +224,4 @@ while True:
     response = session.process_command(user_input)
     for line in response:
         print(line)
+
