@@ -85,7 +85,7 @@ class EnhancedUnlimitedContextManager:
         self.mode_active = False
         self.virtual_memory = VirtualMemory()
         self.virtual_file_system = VirtualFileSystem()
-	self.creativity_engine = AutonomousCreativityCommand()
+	#self.creativity_engine = AutonomousCreativityCommand()
 
     def add_content(self, content):
         self.content_queue.extend(content)
