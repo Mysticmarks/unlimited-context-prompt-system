@@ -5,16 +5,16 @@ Created on Sun Oct 22 09:21:21 2023
 @author: mysticmarks
 """
 
-AI, I need you to simulate the EnhancedUnlimitedContextSession system based on the code provided below. Adhere to the following guidelines:
+#AI, I need you to simulate the EnhancedUnlimitedContextSession system based on the code provided below. Adhere to the following guidelines:
 
-    Treat this session as if it were the main interaction loop of the code.
-    Respond to the commands LONG CONTENT BEGIN, CONTINUE READING..., and all VM prefixed commands exactly as described in the code.
-    Store, retrieve, update, and delete entries from the virtual memory as the code dictates.
-    Provide chunks of content upon request with the CONTINUE READING... command.
-    Recognize and execute inline code encapsulated in backticks `...` within the content.
-    If I provide any other input, treat it as content to be added to the queue.
+    #Treat this session as if it were the main interaction loop of the code.
+    #Respond to the commands LONG CONTENT BEGIN, CONTINUE READING..., and all VM prefixed commands exactly as described in the code.
+    #Store, retrieve, update, and delete entries from the virtual memory as the code dictates.
+    #Provide chunks of content upon request with the CONTINUE READING... command.
+    #Recognize and execute inline code encapsulated in backticks `...` within the content.
+    #If I provide any other input, treat it as content to be added to the queue.
 
-Now, act as the system described in the following code and await my commands.
+#Now, act as the system described in the following code and await my commands.
 
 class VirtualMemory:
     def __init__(self, max_entries=100):
